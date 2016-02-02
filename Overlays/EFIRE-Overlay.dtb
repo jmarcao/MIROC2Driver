@@ -1,7 +1,11 @@
 /* 
-E-FIRE Senior Design Project, Boston University
-Overlay file for enabling the pins necesary for interaction with the MIROC2
-This file has been adpated from Derek Molloy's book "Exploring BeagleBone Black"
+   E-FIRE Senior Design Project, Boston University
+   John Marcao
+   Overlay file for enabling the pins necesary for interaction with the MIROC2
+   This file has been adpated from Derek Molloy's book "Exploring BeagleBone Black"
+   
+   Version 0.1
+     - Outputs Enable (All outputs on P9 header)
 */
 
 /dts-v1/;
@@ -10,12 +14,13 @@ This file has been adpated from Derek Molloy's book "Exploring BeagleBone Black"
 / {
    compatible = "ti,beaglebone", "ti,beaglebone-black";
 
-   part-number = "EBB-PRU-Example";
+   part-number = "EFIRE-Overlay";
    version = "00A0";
 
    /* This overlay uses the following resources */
    exclusive-use =
-         "P9.11", "P9.13", "P9.27", "P9.28", "pru0";
+         "P9.11", "P9.12", "P9.13", "P9.14", "P9.17", "P9.18", "P9.19", "P9.20", "P9.21",
+         "P9.25", "P9.27", "P9.28", "P9.29", "P9.30", "P9.31", "pru0";
 
    fragment@0 {
       target = <&am33xx_pinmux>;
@@ -24,22 +29,37 @@ This file has been adpated from Derek Molloy's book "Exploring BeagleBone Black"
          // Typical GPIO Pins available to the Linux OS.
          gpio_pins: pinmux_gpio_pins {
             pinctrl-single,pins = <
-               // The following Pins have been left as examples to assist the writer. 
-               // They will not be retained in the final version
-               0x070 0x07  // P9_11 MODE7 | OUTPUT | GPIO pull-down
-               0x074 0x27  // P9_13 MODE7 | INPUT | GPIO pull-down
+
+            //Output GPIO Pins
+               // MUX Enable + P&H Reset
+               0x070 0x07 // P9_11, MODE7, gpio0[30], LSB
+               0x078 0x07 // P9_12, MODE7, gpio1[28]
+               0x074 0x07 // P9_13, MODE7, gpio0[31]
+               0x048 0x07 // P9_14, MODE7, gpio1[18], MSB
+
+               // Address Select
+               0x15c 0x07 // P9_17, MODE7, gpio0[5], LSB
+               0x158 0x07 // P9_18, MODE7, gpio0[4]
+               0x17c 0x07 // P9_19, MODE7, gpio0[13]
+               0x178 0x07 // P9_20, MODE7, gpio0[12]
+               0x154 0x07 // P9_21, MODE7, gpio0[3]. MSB
             >;
          };
 
+         // Enhanced GPIO Pins with direct PRU memory access
          pru_pru_pins: pinmux_pru_pru_pins {   // The PRU pin modes
             pinctrl-single,pins = <
-               0x194 0x05  // P9_29 pr1_pru0_pru_r30_1, MODE5 | OUTPUT | ADC0 Clock Output
-               0x198 0x05   // P9_30 pr1_pru0_pru_r30_2, MODE5 | OUTPUT | ADC1 Clock Output
-               0x190 0x05  // P9_31 pr1_pru0Ppru_r30_3, MODE5 | OUTPUT | ADC2 Clock Output
-               // The following Pins have been left as examples to assist the writer. 
-               // They will not be retained in the final version
-               0x1a4 0x05  // P9_27 pr1_pru0_pru_r30_5, MODE5 | OUTPUT | PRU
-               0x19c 0x26  // P9_28 pr1_pru0_pru_r31_3, MODE6 | INPUT | PRU
+
+            //Output PRU Pins
+               // ADC Start
+               0x1ac 0x05 // P9_25 pr1_pru0_pru_r30_7, ADC0 Start Output
+               0x1a4 0x05  // P9_27 pr1_pru0_pru_r30_5, ADC1 Start Output
+               0x19c 0x05  // P9_28 pr1_pru0_pru_r31_3, ADC2 Start Output
+
+               // ADC Clock
+               0x194 0x05  // P9_29 pr1_pru0_pru_r30_1, ADC0 Clock Output
+               0x198 0x05   // P9_30 pr1_pru0_pru_r30_2, ADC1 Clock Output
+               0x190 0x05  // P9_31 pr1_pru0Ppru_r30_3, ADC2 Clock Output
             >;
          };
       };
