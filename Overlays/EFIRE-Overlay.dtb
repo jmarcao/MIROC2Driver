@@ -1,8 +1,8 @@
 /* 
    E-FIRE Senior Design Project, Boston University
    John Marcao
-   Overlay file for enabling the pins necesary for interaction with the MIROC2
-   This file has been adpated from Derek Molloy's book "Exploring BeagleBone Black"
+   Overlay file for enabling the pins necessary for interaction with the MIROC2
+   This file has been adapted from Derek Molloy's book "Exploring BeagleBone Black"
    
    Version 0.1
      - Outputs Enable (All outputs on P9 header)
