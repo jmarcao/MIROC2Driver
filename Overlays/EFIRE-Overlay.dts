@@ -4,8 +4,8 @@
    Overlay file for enabling the pins necessary for interaction with the MIROC2
    This file has been adapted from Derek Molloy's book "Exploring BeagleBone Black"
    
-   Version 0.1
-     - Outputs Enable (All outputs on P9 header)
+   Version 0.3
+     - All Outputs and Inputs to and from Analog board implemented.
 */
 
 /dts-v1/;
@@ -19,7 +19,7 @@
 
    /* This overlay uses the following resources */
    exclusive-use =
-         "P9.11", "P9.12", "P9.13", "P9.14", "P9.17", "P9.18", "P9.19", "P9.20", "P9.21", "P9.25", "P9.27", "P9.28", "P9.29", "P9.30", "P9.31", "pru0";
+         "P9.11", "P9.12", "P9.13", "P9.14", "P9.25", "P9.27", "P9.28", "P9.29", "P9.30", "P9.31", "pru0";
 
    fragment@0 {
       target = <&am33xx_pinmux>;
@@ -35,6 +35,28 @@
                0x078 0x07  // P9_12, MODE7, gpio1[28]
                0x074 0x07  // P9_13, MODE7, gpio0[31]
                0x048 0x07  // P9_14, MODE7, gpio1[18], MSB
+
+            //Input GPIO Pins
+               //Trigger Inputs
+               0x028 0x27  //P8_14, MODE7, gpio0[26]
+               0x03c 0x27  //P8_15, MODE7, gpio1[15]
+               0x038 0x27  //P8_16, MODE7, gpio1[14]
+               0x02c 0x27  //P8_17, MODE7, gpio0[27]
+               0x08c 0x27  //P8_18, MODE7, gpio2[1]
+               0x020 0x27  //P8_19, MODE7, gpio0[22]
+               0x07c 0x27  //P8_26, MODE7, gpio1[29]
+               0x0e0 0x27  //P8_27, MODE7, gpio2[22]
+               0x0e8 0x27  //P8_28, MODE7, gpio2[24]
+               0x0e4 0x27  //P8_29, MODE7, gpio2[23]
+               0x0ec 0x27  //P8_30, MODE7, gpio2[25]
+               0x0d8 0x27  //P8_31, MODE7, gpio0[10]
+               0x0dc 0x27  //P8_32, MODE7, gpio0[11]
+               0x0d4 0x27  //P8_33, MODE7, gpio0[9]
+               0x0cc 0x27  //P8_34, MODE7, gpio2[17]
+               0x0d0 0x27  //P8_35, MODE7, gpio0[8]
+               0x0c8 0x27  //P8_36, MODE7, gpio2[16]
+               0x0c0 0x27  //P8_37, MODE7, gpio2[14]
+               0x0c4 0x27  //P8_38, MODE7, gpio2[15]
             >;
          };
 
@@ -45,13 +67,13 @@
             //Output PRU Pins
                // ADC Start
                0x1ac 0x05  // P9_25 pr1_pru0_pru_r30_7, ADC0 Start Output
-               0x1a4 0x05   // P9_27 pr1_pru0_pru_r30_5, ADC1 Start Output
-               0x19c 0x05    // P9_28 pr1_pru0_pru_r31_3, ADC2 Start Output
+               0x1a4 0x05  // P9_27 pr1_pru0_pru_r30_5, ADC1 Start Output
+               0x19c 0x05  // P9_28 pr1_pru0_pru_r31_3, ADC2 Start Output
 
                // ADC Clock
-               0x194 0x05   // P9_29 pr1_pru0_pru_r30_1, ADC0 Clock Output
-               0x198 0x05   // P9_30 pr1_pru0_pru_r30_2, ADC1 Clock Output
-               0x190 0x05   // P9_31 pr1_pru0_pru_r30_3, ADC2 Clock Output
+               0x194 0x05  // P9_29 pr1_pru0_pru_r30_1, ADC0 Clock Output
+               0x198 0x05  // P9_30 pr1_pru0_pru_r30_2, ADC1 Clock Output
+               0x190 0x05  // P9_31 pr1_pru0_pru_r30_3, ADC2 Clock Output
 
                // Addresss
                0x0b8 0x05  //P8_39 pr1_pru1_pru_r30_6, LSB
@@ -59,6 +81,12 @@
                0x0b0 0x05  //P8_41 pr1_pru1_pru_r30_4
                0x0b4 0x05  //P8_42 pr1_pru1_pru_r30_5
                0x0a8 0x05  //P8_43 pr1_pru1_pru_r30_2, MSB
+
+            //Input PRU Pins
+               // Data Input
+               0x0ac 0x06  //P8_44 pr1_pru1_pru_r31_3, ADC0
+               0x0a0 0x06  //P8_45 pr1_pru1_pru_r31_0, ADC1
+               0x0a4 0x06  //P8_46 pr1_pru1_pru_r31_1, ADC2
             >;
          };
       };
