@@ -19,7 +19,7 @@
 
    /* This overlay uses the following resources */
    exclusive-use =
-         "P9.11", "P9.12", "P9.13", "P9.14", "P9.25", "P9.27", "P9.28", "P9.29", "P9.30", "P9.31", "pru0";
+         "P9.11", "P9.12", "P9.13", "P9.14", "P9.25", "P9.27", "P9.28", "P9.29", "P9.30", "P9.31", "pru0", "pru1";
 
    fragment@0 {
       target = <&am33xx_pinmux>;
@@ -31,32 +31,32 @@
 
             //Output GPIO Pins
                // MUX Enable + P&H Reset
-               0x070 0x07  // P9_11, MODE7, gpio0[30], LSB
-               0x078 0x07  // P9_12, MODE7, gpio1[28]
-               0x074 0x07  // P9_13, MODE7, gpio0[31]
-               0x048 0x07  // P9_14, MODE7, gpio1[18], MSB
+               0x070 0x07  // P9_11, MODE7, gpio0[30], LSB  0001 - MUX 1 Enable
+               0x078 0x07  // P9_12, MODE7, gpio1[28]       0010 - MUX 2 Enable 
+               0x074 0x07  // P9_13, MODE7, gpio0[31]       0100 - MUX 3 Enable
+               0x048 0x07  // P9_14, MODE7, gpio1[18], MSB  1000 - P&H Reset on ADDR
 
             //Input GPIO Pins
                //Trigger Inputs
-               0x028 0x27  //P8_14, MODE7, gpio0[26]
-               0x03c 0x27  //P8_15, MODE7, gpio1[15]
-               0x038 0x27  //P8_16, MODE7, gpio1[14]
-               0x02c 0x27  //P8_17, MODE7, gpio0[27]
-               0x08c 0x27  //P8_18, MODE7, gpio2[1]
-               0x020 0x27  //P8_19, MODE7, gpio0[22]
-               0x07c 0x27  //P8_26, MODE7, gpio1[29]
-               0x0e0 0x27  //P8_27, MODE7, gpio2[22]
-               0x0e8 0x27  //P8_28, MODE7, gpio2[24]
-               0x0e4 0x27  //P8_29, MODE7, gpio2[23]
-               0x0ec 0x27  //P8_30, MODE7, gpio2[25]
-               0x0d8 0x27  //P8_31, MODE7, gpio0[10]
-               0x0dc 0x27  //P8_32, MODE7, gpio0[11]
-               0x0d4 0x27  //P8_33, MODE7, gpio0[9]
-               0x0cc 0x27  //P8_34, MODE7, gpio2[17]
-               0x0d0 0x27  //P8_35, MODE7, gpio0[8]
-               0x0c8 0x27  //P8_36, MODE7, gpio2[16]
-               0x0c0 0x27  //P8_37, MODE7, gpio2[14]
-               0x0c4 0x27  //P8_38, MODE7, gpio2[15]
+               0x028 0x27  //P8_14, MODE7, gpio0[26], CH0
+               0x03c 0x27  //P8_15, MODE7, gpio1[15], CH1
+               0x038 0x27  //P8_16, MODE7, gpio1[14], CH2
+               0x02c 0x27  //P8_17, MODE7, gpio0[27], CH3
+               0x08c 0x27  //P8_18, MODE7, gpio2[1], CH4
+               0x020 0x27  //P8_19, MODE7, gpio0[22], CH5
+               0x07c 0x27  //P8_26, MODE7, gpio1[29], CH6
+               0x0e0 0x27  //P8_27, MODE7, gpio2[22], CH7
+               0x0e8 0x27  //P8_28, MODE7, gpio2[24], CH8
+               0x0e4 0x27  //P8_29, MODE7, gpio2[23], CH9
+               0x0ec 0x27  //P8_30, MODE7, gpio2[25], CH10
+               0x0d8 0x27  //P8_31, MODE7, gpio0[10], CH11
+               0x0dc 0x27  //P8_32, MODE7, gpio0[11], CH12
+               0x0d4 0x27  //P8_33, MODE7, gpio0[9], CH13
+               0x0cc 0x27  //P8_34, MODE7, gpio2[17], CH14
+               0x0d0 0x27  //P8_35, MODE7, gpio0[8], CH15
+               0x0c8 0x27  //P8_36, MODE7, gpio2[16], CH16
+               0x0c0 0x27  //P8_37, MODE7, gpio2[14], CH17
+               0x0c4 0x27  //P8_38, MODE7, gpio2[15], CH18
             >;
          };
 
@@ -76,7 +76,7 @@
                0x190 0x05  // P9_31 pr1_pru0_pru_r30_3, ADC2 Clock Output
 
                // Addresss
-               0x0b8 0x05  //P8_39 pr1_pru1_pru_r30_6, LSB
+               0x0b8 0x05  //P8_39 pr1_pru1_pru_r30_6, LSB        Only Outputs 00000 - 01010 defined
                0x0bc 0x05  //P8_40 pr1_pru1_pru_r30_7
                0x0b0 0x05  //P8_41 pr1_pru1_pru_r30_4
                0x0b4 0x05  //P8_42 pr1_pru1_pru_r30_5
