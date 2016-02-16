@@ -26,7 +26,7 @@
 
    /* This overlay uses the following resources */
    exclusive-use =
-         "pru0", "pru1";
+         "P8.27", "P8.28", "P8.29", "P8.30", "P8.39", "P9.29", "P9.30", "P9.31", "pru0", "pru1";
 
    fragment@0 {
       target = <&am33xx_pinmux>;
@@ -80,23 +80,23 @@
 
             //Input PRU Pins
                //Trigger Inputs (Default, Fast)
-               0x0e0 0x06  // P8_27 pr1_pru1_pru_r31_8
-               0x0e8 0x06  // P8_28 pr1_pru1_pru_r31_10
-               0x0e4 0x06  // P8_29 pr1_pru1_pru_r31_9
-               0x0ec 0x06  // P8_30 pr1_pru1_pru_r31_11
-               0x0b8 0x06  // P8_39 pr1_pru1_pru_r31_6
-               0x0bc 0x06  // P8_40 pr1_pru1_pru_r31_7
-               0x0b0 0x06  // P8_41 pr1_pru1_pru_r31_4
-               0x0b4 0x06  // P8_42 pr1_pru1_pru_r31_5
-               0x0a8 0x06  // P8_43 pr1_pru1_pru_r31_2
-               0x0ac 0x06  // P8_44 pr1_pru1_pru_r31_3
-               0x0a0 0x06  // P8_45 pr1_pru1_pru_r31_0
-               0x0a4 0x06  // P8_46 pr1_pru1_pru_r31_1
+               0x0e0 0x26  // P8_27 pr1_pru1_pru_r31_8
+               0x0e8 0x26  // P8_28 pr1_pru1_pru_r31_10
+               0x0e4 0x26  // P8_29 pr1_pru1_pru_r31_9
+               0x0ec 0x26  // P8_30 pr1_pru1_pru_r31_11
+               0x0b8 0x26  // P8_39 pr1_pru1_pru_r31_6
+               0x0bc 0x26  // P8_40 pr1_pru1_pru_r31_7
+               0x0b0 0x26  // P8_41 pr1_pru1_pru_r31_4
+               0x0b4 0x26  // P8_42 pr1_pru1_pru_r31_5
+               0x0a8 0x26  // P8_43 pr1_pru1_pru_r31_2
+               0x0ac 0x26  // P8_44 pr1_pru1_pru_r31_3
+               0x0a0 0x26  // P8_45 pr1_pru1_pru_r31_0
+               0x0a4 0x26  // P8_46 pr1_pru1_pru_r31_1
 
                // Data Input
-               0x03c 0x06  //P8_15 pr1_pru0_pru_r31_15, ADC0
-               0x038 0x06  //P8_16 pr1_pru0_pru_r31_14, ADC1
-               0x184 0x06  //P9_24 pr1_pru0_pru_r31_16, ADC2
+               0x03c 0x26  //P8_15 pr1_pru0_pru_r31_15, ADC0
+               0x038 0x26  //P8_16 pr1_pru0_pru_r31_14, ADC1
+               0x184 0x26  //P9_24 pr1_pru0_pru_r31_16, ADC2
             >;
          };
       };
