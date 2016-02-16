@@ -1,35 +1,36 @@
 Input Pins
-     Trigger Inputs
-          P8_14
-          P8_15
-          P8_16
-          P8_17
-          P8_18
-          P8_19
-          P8_26
-          P8_27
-          P8_28
-          P8_29
-          P8_30
-          P8_31
-          P8_32
-          P8_33
-          P8_34
-          P8_35
-          P8_36
-          P8_37
-          P8_38
+     Trigger Inputs (Default, High Speed)
+          p8_27
+          p8_28
+          p8_29
+          p8_30
+          p8_39
+          p8_40
+          p8_41
+          p8_42
+          p8_43
+          p8_44
+          p8_45
+          p8_46
+     Trigger Inputs (Test, Low Speed)
+          p8_07
+          p8_08
+          p8_09
+          p8_10
+          p8_18
+          p8_36
+          p8_37
      Data Input
-          P8_44
-          P8_45
-          P8_46
+          p8_15
+          p8_16
+          p9_24
 
 Output Pins
      MUX Enable + P&H Reset
-          P9_11
           P9_12
-          P9_13
           P9_14
+          P9_15
+          P9_16
 
      ADC Start
           P9_25
@@ -42,8 +43,14 @@ Output Pins
           P9_31
 
      Addresss
-          P8_39
-          P8_40
-          P8_41
-          P8_42
-          P8_43
+          P8_19
+          P8_31
+          P8_32
+          P8_33
+          P8_35
+
+     SPI / UART
+          P9_17
+          P9_18
+          P9_21
+          P9_22
