@@ -1,3 +1,4 @@
 #!/bin/sh
-pasm -b FixedPRUClock.p
-gcc FixedPRUClock.c -o fixedclock -lpthread -lprussdrv
+pasm -b pru_0_clk.p
+pasm -b pru_1_clk.p
+gcc arm_clk.c -o fixedclock -lpthread -lprussdrv

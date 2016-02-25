@@ -1,0 +1,31 @@
+#!/bin/sh
+export PRU_SDK=/root/efire/cgt/pru_2.0.0B2
+
+echo "EFIRE PRU C Compiler-------------------------------------------------------"
+echo "Compiling PRU_0 Program"
+$PRU_SDK/bin/clpru --silicon_version=3 pru_0.c -i$PRU_SDK/include \
+    -i$PRU_SDK/lib -z AM3359_PRU.cmd -o pru_0.out -m pru_0.map
+
+echo "Converting the executable to a ARM object file"
+$PRU_SDK/bin/hexpru $PRU_SDK/bin.cmd pru_0.out
+
+mv -v ./data.bin ./data_0.bin
+mv -v ./text.bin ./text_0.bin
+
+echo "PRU_0 Program Compiled \n"
+
+echo "Compiling PRU_1 Program"
+$PRU_SDK/bin/clpru --silicon_version=3 pru_1.c -i$PRU_SDK/include \
+    -i$PRU_SDK/lib -z AM3359_PRU.cmd -o pru_1.out -m pru_1.map
+
+echo "Converting the executable to a ARM object file"
+$PRU_SDK/bin/hexpru $PRU_SDK/bin.cmd pru_1.out
+
+mv -v ./data.bin ./data_1.bin
+mv -v ./text.bin ./text_1.bin
+
+echo "PRU_1 Program Compiled \n"
+
+echo "Compiling the efire_pru.c application"
+gcc efire_pru.c -o test -lpthread -lprussdrv
+echo "Compilation Complete \n"
